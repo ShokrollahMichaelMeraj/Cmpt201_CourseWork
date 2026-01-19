@@ -1,0 +1,40 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int arc, char *argv[]) {
+
+  printf("Check Hello World\n");
+
+  // we want to get input from keyboardfrom user,
+  // tokenize it with delimiter
+  // print out each token when we detect spcae(which is the delimiter)
+  // each token is printed on a new line
+  // we use getline() for user input
+  // use strtok_r() for tokenization,
+  // we need to loop to make sure we keep accepting new inputs.
+
+  // getline(); has teh following templatei:
+  // ssize_t getline(char **restrict lineptr, size_t *restrict n,FILE *restrict
+  // stream);
+  // printf("Please enter some text: ");
+  char * buf = NULL;
+  size_t sz = 0;
+  
+
+  while(1){
+    printf("Please enter some text: ");
+    size_t n = getline(&buf, &sz, stdin); //here we give the buffer address and the size address
+                                            //and input stream stdin to the getline.  
+    
+    if (n == -1){
+      printf("error (%zu). \n",n);
+    }
+    printf("typed: %s \n",buf);
+
+
+  }
+
+
+
+}
